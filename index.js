@@ -19,7 +19,7 @@ const estrazione = () => {
     }
     numEstratti.push(estratto);
   }
-  console.log(estratto);
+
   let allN = document.querySelectorAll(".divNum h3");
   let allD = document.querySelectorAll(".divNum");
   for (let j = 0; j < allN.length; j++) {
@@ -32,19 +32,27 @@ const estrazione = () => {
 btnEstrazione = document.querySelector("button");
 btnEstrazione.onclick = estrazione;
 const generaCard = () => {
+  const input = document.getElementById("valore");
+  const numberOfCards = parseInt(input.value);
+
   const tabUser = document.getElementById("tab-user");
-  for (let y = 0; y < 3; y++) {
+
+  for (let y = 0; y < numberOfCards; y++) {
+    const conteiner = document.createElement("div");
+    conteiner.classList.add("card-user");
     for (let c = 0; c < 24; c++) {
       const divNumUser = document.createElement("div");
       divNumUser.classList.add("divNum");
       const numUser = document.createElement("h3");
       numUser.innerText = Math.ceil(Math.random() * 76);
       divNumUser.appendChild(numUser);
-      tabUser.appendChild(divNumUser);
+      conteiner.appendChild(divNumUser);
     }
+    tabUser.appendChild(conteiner);
   }
 };
-btnCard = document.getElementById("scegli");
+const btnCard = document.getElementById("scegli");
 console.log(btnCard);
-inp = document.getElementById("valore");
+const input = document.getElementById("valore");
+input.value = 0;
 btnCard.onclick = generaCard;
